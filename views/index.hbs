@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Front Page</title>
+
+	<!-- bootstrap css -->
+	<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<!-- custom styles -->
+	<link type="text/css" rel="stylesheet" href="main.css">
+</head>
+<body>
+	
+	<h1>New York Times Front Page Articles</h1>
+
+	<div class="form">
+		<form id="dates">
+			<label for="start-date">
+				Choose a Start Date
+				<input type="text" id="start-date">
+			</label>
+			<label for="end-date">
+				Choose an End Date
+				<input type="text" id="end-date">
+			</label>
+			<input type="submit" class="btn btn-primary">
+		</form>
+	</div>
+
+	<div class="container">
+		<div class="col-sm-6 col-sm-offset-3 well">
+			<ul id="results">
+				<script id="articles-template" type="text/x-handlebars-template">
+					\{{#each articles}}
+						<li><h4>\{{headline.main}}</h4></li>
+					\{{/each}}
+				</script>		
+			</ul>
+		</div>
+	</div>
+
+	<!-- jquery -->  
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<!-- jQuery UI -->
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<!-- Bootstrap JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+	<!-- handlebars -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.3/handlebars.min.js"></script>
+
+	<script type="text/javascript" src="main.js"></script>
+</body>
+</html>
