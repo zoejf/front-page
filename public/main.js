@@ -22,25 +22,18 @@ $(function() {
 		end = year + end;
 		console.log('start:', start, ' end: ', end);
 
-		var datesURL = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?fq=section_name=front+page&begin_date=' + start + '&end_date=' + end + '&api-key=d72291a45afc693bb3591b097d65b3c3:9:56852953';
+		// var datesURL = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?fq=section_name=front+page&begin_date=' + start + '&end_date=' + end + '&page=4&api-key=d72291a45afc693bb3591b097d65b3c3:9:56852953';
+		var datesURL = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?fq=type_of_material=front+page&section_name=front+page&facet_field=source&begin_date=' + start + '&end_date=' + end + '&api-key=d72291a45afc693bb3591b097d65b3c3:9:56852953';
 	
 		$.get(datesURL, function (data) {
 			var articleResults = data.response.docs;
+			var sources = data.facets.source.terms;
 			
 			var articleHtml = template({ articles: articleResults });
-			console.log(articleHtml);
 
+			$results.empty();
 			$results.append(articleHtml);
 		});
 	}); 	 
-
-	// $.get(articlesURL, function (data) {
-	// 	var articleResults = data.response.docs;
-		
-	// 	var articleHtml = template({ articles: articleResults });
-	// 	console.log(articleHtml);
-
-	// 	$results.append(articleHtml);
-	// });
 
 });

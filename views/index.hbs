@@ -30,14 +30,24 @@
 	</div>
 
 	<div class="container">
+	  <div class="col-sm-8 col-sm-offset-2">
+	  	<div id="sources">
+	  		<script id="sources-template" type="text/x-handlebars-template">
+	  			
+	  		</script>
+	  	</div>
+	  </div>
 		<div class="col-sm-6 col-sm-offset-3 well">
-			<ul id="results">
+			<div id="results">
 				<script id="articles-template" type="text/x-handlebars-template">
 					\{{#each articles}}
-						<li><h4>\{{headline.main}}</h4></li>
+						<p><strong>\{{headline.main}}</strong></p>
+						<p>Section: \{{section_name}}</p>
+						<p>Word Count: \{{word_count}}
+
 					\{{/each}}
 				</script>		
-			</ul>
+			</div>
 		</div>
 	</div>
 
