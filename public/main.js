@@ -3,9 +3,14 @@ $(function() {
     $( "#start-date" ).datepicker();
     $( "#end-date" ).datepicker();
 
+  //sources template
+  var $sourcesList = $('#sources-list');
+  var source = $('#sources-template').html();
+  var template = Handlebars.compile(source);
+ 	//article details template
 	var $results = $('#results');
-	var source = $('#articles-template').html();
-	var template = Handlebars.compile(source);
+	var articleSource = $('#articles-template').html();
+	var articleTemplate = Handlebars.compile(articleSource);
 
 	var yearURL = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?fq=section_name=frontpage&pub.year=2012&api-key=d72291a45afc693bb3591b097d65b3c3:9:56852953';
 	
@@ -27,11 +32,15 @@ $(function() {
 	
 		$.get(datesURL, function (data) {
 			var articleResults = data.response.docs;
-			var sources = data.facets.source.terms;
-			
-			var articleHtml = template({ articles: articleResults });
+			var sourcesResults = data.response.facets.source.terms;
 
+			var sourcesHtml = template({ sources: sourcesResults });
+			var articleHtml = articleTemplate({ articles: articleResults });
+			
+			$sourcesList.empty();
 			$results.empty();
+
+			$sourcesList.append(sourcesHtml);
 			$results.append(articleHtml);
 		});
 	}); 	 

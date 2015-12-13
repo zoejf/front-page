@@ -1,3 +1,7 @@
 body {
 	background-color: gray;
 }
+.source-box {
+	margin: 20px auto;
+	height: 150px;
+}

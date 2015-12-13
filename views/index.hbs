@@ -30,13 +30,18 @@
 	</div>
 
 	<div class="container">
-	  <div class="col-sm-8 col-sm-offset-2">
-	  	<div id="sources">
-	  		<script id="sources-template" type="text/x-handlebars-template">
-	  			
-	  		</script>
-	  	</div>
-	  </div>
+		<div class="row" id="sources-list">
+			<div class="col-sm-1"></div>
+			<script id="sources-template" type="text/x-handlebars-template">
+	  		\{{#each sources}}
+			  	<div class="col-sm-2">
+			  		<div class="well source-box">
+			  			<h4>\{{term}} <br> <small>\{{count}}</small></h4>
+			  		</div>
+			  	</div>
+	  		\{{/each}}
+			</script>
+		</div>
 		<div class="col-sm-6 col-sm-offset-3 well">
 			<div id="results">
 				<script id="articles-template" type="text/x-handlebars-template">
@@ -44,12 +49,12 @@
 						<p><strong>\{{headline.main}}</strong></p>
 						<p>Section: \{{section_name}}</p>
 						<p>Word Count: \{{word_count}}
-
 					\{{/each}}
 				</script>		
 			</div>
 		</div>
-	</div>
+
+	</div> <!-- end of container -->
 
 	<!-- jquery -->  
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
